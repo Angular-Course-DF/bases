@@ -10,9 +10,19 @@
 
   <div class="col-12 col-sm-6">
     <h3>Listado</h3>
-    <ol>
-      <li>GOku</li>
-      <li>VEgeta</li>
-    </ol>
+    <ul>
+      @for (character of characters(); track character.id; let idx = $index) {
+      <li>
+        <span> {{ $index + 1 }} - {{ character.name }} </span>
+        <strong
+          [class.text-danger]="character.power > 9000"
+          [class.text-primary]="character.power < 9000"
+          >({{ character.power }})</strong
+        >
+      </li>
+
+      }
+      <!-- <li>VEgeta</li> -->
+    </ul>
   </div>
 </section>
